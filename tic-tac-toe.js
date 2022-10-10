@@ -16,7 +16,7 @@ window.onload = function(){
       tiles[tile].setAttribute("class", "square")
   }
   
-
+//adds an X or O to a square alternatively when clicked
   for(let tile = 0; tile <= 8; tile++){
       var xo_func = function() {
           if(clicks%2==1 && tiles[tile].innerHTML==""){
@@ -26,7 +26,7 @@ window.onload = function(){
               board[tile] = "O"
               clicks--;
           }
-          
+
           if(clicks%2==0 && tiles[tile].innerHTML==""){
 
               tiles[tile].setAttribute("class","square X");
@@ -36,6 +36,16 @@ window.onload = function(){
           }
 
       }
-      tiles[tile].addEventListener('click',xo_func);    
+      tiles[tile].addEventListener('click',xo_func); 
+      
+      //adds hover when mouseover
+        tiles[tile].addEventListener('mouseover', function (){   
+            tiles[tile].classList.add("hover")
+        });
+
+        //removes hover when mouseleave
+        tiles[tile].addEventListener('mouseleave', function (){   
+            tiles[tile].classList.remove("hover")
+        });
 }
 }
