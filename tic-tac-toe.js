@@ -9,6 +9,10 @@ window.onload = function(){
   var clicks = 9;
   var win_combs = [[0, 1, 2], [3, 4, 5],[6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
   var status = "No winner"
+  var restart = document.getElementsByClassName("btn");
+  var refresh =  function(){
+    location.reload();
+  }
 
   //stores a list of all the divs inside a container with the id "board"
   let tiles = document.querySelectorAll("#board div");
@@ -30,7 +34,7 @@ window.onload = function(){
     tiles[tile].setAttribute("class", "square")
   }
   
-//adds an X or O to a square alternatively when clicked
+  //adds an X or O to a square alternatively when clicked
   for(let tile = 0; tile <= 8; tile++){
     var xo_func = function() {
       if(clicks%2==1 && tiles[tile].innerHTML==""){
@@ -52,7 +56,7 @@ window.onload = function(){
         board[tile] = "X"
         clicks--;
 
-        if(checkWinner() == 'O'){
+        if(checkWinner() == 'X'){
           status = "Congratulations! X is the Winner!";
           document.getElementById("status").innerHTML=status;
           document.getElementById("status").classList.add("you-won");
@@ -72,4 +76,6 @@ window.onload = function(){
           tiles[tile].classList.remove("hover")
       });
 }
+
+restart[0].addEventListener('click',refresh);
 }
